@@ -19,8 +19,8 @@ class BottonNavigation extends StatelessWidget {
         },
         currentIndex: currentIndex,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.map_outlined), label: '')
+          BottomNavigationBarItem(icon: Icon(Icons.map_outlined), label: 'Mapa'),
+          BottomNavigationBarItem(icon: Icon(Icons.directions), label: 'Direcciones')
         ]);
   }
 }

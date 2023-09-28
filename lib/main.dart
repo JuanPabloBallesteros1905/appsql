@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qrscanner/pages/home_page.dart';
 import 'package:qrscanner/pages/map_page.dart';
+import 'package:qrscanner/providers/scans_list_provider.dart';
 import 'package:qrscanner/providers/ui_provider.dart';
 
 void main() => runApp(const MyApp());
@@ -14,9 +15,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => UiProvider(),
-          lazy: false,
-        )
+            create: (context) => ScansListProvider(), lazy: false),
+        ChangeNotifierProvider(create: (context) => UiProvider(), lazy: false)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

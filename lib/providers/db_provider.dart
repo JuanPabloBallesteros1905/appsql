@@ -89,13 +89,13 @@ class DBProvider {
     res.isNotEmpty ? ScanModel.fromJson(res.first) : [];
   }
 
-  Future getType(String tipo) async {
+  Future<List<ScanModel>> getType(String tipo) async {
     final db = await database;
     final res = await db.rawQuery('''
       SELECT * FROM Scans WHERE tipo = '$tipo'
-
     ''');
-    res.isNotEmpty ? ScanModel.fromJson(res.first) : [];
+
+    return res.isNotEmpty ? res.map((e) => ScanModel.fromJson(e)).toList() : [];
   }
 
   //*Actualizar segun el id
@@ -118,11 +118,9 @@ class DBProvider {
     return res;
   }
 
-
   //*borrar todos los datos de una tabla
 
   Future<int> deleteAll() async {
-
     final db = await database;
 
     final res = await db.delete('Scans');
