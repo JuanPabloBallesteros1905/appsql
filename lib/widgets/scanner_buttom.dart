@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
 import 'package:qrscanner/providers/scans_list_provider.dart';
 import 'package:qrscanner/util/utilities.dart';
@@ -8,18 +11,19 @@ class ScannerButtom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bardCode = 'geo:11.009264, -74.247413';
-
     final scanListProvider =
         Provider.of<ScansListProvider>(context, listen: false);
     return FloatingActionButton(
       onPressed: () async {
-        // FlutterBarcodeScanner.scanBarcode(
-        //     '##FF333C', 'Cancelar', false, ScanMode.QR);
 
-        final nuevoScan = await scanListProvider.nuevoScanList(bardCode);
+        String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+                                                    "#ff6666", 
+                                                    "Cancel", 
+                                                    false, 
+                                                    ScanMode.QR);
+ 
+        final nuevoScan = await scanListProvider.nuevoScanList(barcodeScanRes);
 
-        // ignore: use_build_context_synchronously
         launchUrll(context, nuevoScan);
       },
       child: const Icon(Icons.qr_code),
