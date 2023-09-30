@@ -3,6 +3,9 @@
         android:label="qrscanner"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyA5N_4TXaSWVrK4_qQqkEDZsMcCMCbSnvU"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
