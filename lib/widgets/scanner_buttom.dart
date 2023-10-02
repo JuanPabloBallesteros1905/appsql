@@ -15,13 +15,9 @@ class ScannerButtom extends StatelessWidget {
         Provider.of<ScansListProvider>(context, listen: false);
     return FloatingActionButton(
       onPressed: () async {
-
         String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-                                                    "#ff6666", 
-                                                    "Cancel", 
-                                                    false, 
-                                                    ScanMode.QR);
- 
+            "#ff6666", "Cancel", false, ScanMode.QR);
+
         final nuevoScan = await scanListProvider.nuevoScanList(barcodeScanRes);
 
         launchUrll(context, nuevoScan);
